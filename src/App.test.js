@@ -35,9 +35,21 @@ test('renders counter display', () => {
 })
 
 test('counter starts at 0', () => {
-
+  const wrapper = setup()
+  const countValue = findByTestAttr(wrapper, 'count-value').text()
+  expect(countValue).toBe('0')
+  
 })
 
 test('clicking on button increments counter display', () => {
+  const wrapper = setup()
+
+  const button = findByTestAttr(wrapper, 'increment-button')
+  
+  button.simulate('click')
+
+  const countValue = findByTestAttr(wrapper, 'count-value').text()
+
+  expect(countValue).toBe('1')
 
 })
